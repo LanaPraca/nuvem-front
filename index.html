@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product CRUD - Restructured</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- Add Toastify CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+  <h1>Product CRUD</h1>
+
+  <div class="app-container">
+    <aside class="column column-actions">
+      <!-- Add Product Form -->
+      <section id="add-section">
+        <form id="add-product-form">
+          <h2>Add Product</h2>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+          <label for="price">Price:</label>
+          <input type="number" id="price" name="price" required step="0.01">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description"></textarea>
+          <button type="submit">Add</button>
+        </form>
+      </section>
+
+      <!-- Update Product Form (Initially Hidden) -->
+      <section id="update-section" style="display: none;">
+        <form id="update-product-form">
+          <h2>Update Product</h2>
+          <input type="hidden" id="update-id">
+          <label for="update-name">Name:</label>
+          <input type="text" id="update-name" name="update-name" required>
+          <label for="update-price">Price:</label>
+          <input type="number" id="update-price" name="update-price" required step="0.01">
+          <label for="update-description">Description:</label>
+          <textarea id="update-description" name="update-description"></textarea>
+          <button type="submit">Update</button>
+          <button type="button" id="cancel-update">Cancel</button>
+        </form>
+      </section>
+
+      <!-- Search Product Form -->
+      <section id="search-section">
+        <form id="search-product-form">
+            <h2>Search Product by ID</h2>
+            <label for="search-id">Product ID:</label>
+            <input type="text" id="search-id" name="search-id">
+            <button type="submit">Search</button>
+        </form>
+        <div id="search-result" style="display: none;"></div> <!-- Search results appear here -->
+      </section>
+
+    </aside>
+
+    <main class="column column-view">
+      <h2>Product List</h2>
+      <ul id="products"></ul>
+    </main>
+  </div>
+
+  <!-- Add Toastify JS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <script src="app.js"></script>
+  <script>
+    // Call fetchProducts() when the page loads
+    window.addEventListener("load", fetchProducts);
+  </script>
+</body>
+</html>
+

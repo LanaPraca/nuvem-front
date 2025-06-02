@@ -1,0 +1,378 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --primary-color: #3498db; /* Blue */
+    --secondary-color: #2ecc71; /* Green */
+    --danger-color: #e74c3c; /* Red */
+    --warning-color: #f39c12; /* Orange */
+    --light-gray: #ecf0f1;
+    --medium-gray: #bdc3c7;
+    --dark-gray: #7f8c8d;
+    --text-color: #34495e;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --border-radius: 6px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 30px;
+}
+
+/* Remove old container class if not needed, or adapt */
+/* .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+} */
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--light-gray);
+    padding-bottom: 8px;
+    margin-top: 0; /* Reset top margin for section headers */
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+/* New Layout Styles */
+.app-container {
+    display: flex;
+    gap: 30px; /* Space between columns */
+    max-width: 1400px; /* Adjust max-width as needed */
+    margin: 0 auto;
+}
+
+.column {
+    padding: 0; /* Remove padding if sections/forms have their own */
+}
+
+.column-actions {
+    flex: 1; /* Takes up 1 part of the available space */
+    min-width: 320px; /* Minimum width for the actions column */
+    max-width: 450px; /* Optional: Max width for actions column */
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between sections in the actions column */
+}
+
+.column-view {
+    flex: 2.5; /* Takes up 2.5 parts, making it wider */
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--light-gray);
+}
+
+/* Adjust Section/Form Styling within Columns */
+.column-actions section {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--light-gray);
+}
+
+.column-actions form {
+    background-color: transparent; /* Form background is now handled by section */
+    padding: 0; /* Remove form padding */
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 0; /* Remove bottom margin */
+    max-width: none; /* Remove max-width */
+    margin-left: 0;
+    margin-right: 0;
+    border: none; /* Remove form border */
+}
+
+.column-actions h2 {
+    margin-top: 0; /* Ensure h2 inside sections don't have extra top margin */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 18px;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Button Styling (Mostly unchanged, check context) */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, transform 0.15s ease, box-shadow var(--transition-speed) ease;
+    margin-right: 10px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific Button Colors */
+form button[type="submit"] {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#cancel-update {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.delete-btn {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.update-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#clear-search-results {
+    background-color: var(--dark-gray);
+    color: white;
+    margin-top: 15px; /* Add some space above clear button */
+}
+
+/* Product List Styling (Inside column-view) */
+.column-view h2 {
+    margin-top: 0;
+}
+
+#products {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    /* Adjust grid columns for the wider view area if needed */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly smaller minmax might fit more cards */
+    gap: 25px;
+}
+
+#products li {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    /* Use a lighter shadow or border if column-view already has background/shadow */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--light-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+#products li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+#products li strong {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+#products li p {
+    margin: 10px 0 15px 0;
+    color: var(--dark-gray);
+    flex-grow: 1;
+    font-size: 0.95rem;
+}
+
+#products li div /* Container for buttons */
+{
+    margin-top: 15px;
+    align-self: flex-end;
+    display: flex; /* Ensure buttons are side-by-side */
+    gap: 10px; /* Add gap between buttons */
+}
+
+/* Search Results Styling (Inside column-actions) */
+#search-result {
+    background-color: #e8f6fd; /* Light blue background */
+    padding: 25px;
+    border-radius: var(--border-radius);
+    border: 1px solid #bde0fe; /* Light blue border */
+    margin-top: 20px; /* Adjust margin as needed */
+    /* Remove max-width and margin: auto as it's inside a flex column */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+#search-result h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+#search-result div {
+    margin-bottom: 15px; /* Slightly reduce bottom margin */
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+#search-result strong {
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}
+
+/* Responsive Adjustments */
+
+/* Tablet and Smaller Desktop */
+@media (max-width: 992px) {
+    .app-container {
+        flex-direction: column; /* Stack columns */
+        gap: 40px; /* Increase gap when stacked */
+    }
+
+    .column-actions {
+        max-width: none; /* Allow actions column to take full width */
+        min-width: 0;
+        order: 1; /* Actions first */
+    }
+
+    .column-view {
+        order: 2; /* List second */
+    }
+
+    #products {
+        /* Adjust grid for medium screens if needed, e.g., fewer columns */
+         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .column-actions section,
+    .column-view,
+    #search-result {
+        padding: 20px;
+    }
+
+    #products {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    button:last-of-type {
+        margin-bottom: 0; /* Prevent double margin */
+    }
+
+    #products li div {
+        flex-direction: column; /* Stack buttons vertically inside cards */
+        align-self: stretch;
+        gap: 10px;
+    }
+
+    #products li div button {
+        width: 100%;
+        margin-bottom: 0; /* Remove margin handled by gap */
+    }
+
+    /* Ensure form buttons stack correctly */
+    form button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    form button:last-of-type {
+        margin-bottom: 0;
+    }
+
+    #cancel-update {
+        margin-top: 10px; /* Add space above cancel button when stacked */
+    }
+
+    #clear-search-results {
+         width: 100%;
+         margin-right: 0;
+         margin-bottom: 0; /* No margin needed if it's the last element */
+    }
+}
+

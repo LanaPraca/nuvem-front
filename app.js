@@ -25,7 +25,7 @@ const cancelUpdateButton = document.querySelector("#cancel-update");
 const searchIdInput = document.querySelector("#search-id");
 
 // Base URL for the API
-const API_URL = "http://3.144.73.2:3000/products"; // Make sure this is correct
+const API_URL = "3.144.73.2:3000/products"; // Make sure this is correct
 
 // --- Toastify Configuration --- (Unchanged)
 const toastOptions = {
